@@ -5,4 +5,12 @@ function computerPlay() {
     return choices[number]
 }
 
-console.log(computerPlay())
+let computerSelection = computerPlay()
+let playerSelection = prompt('Choose: Rock, paper or scissors').toLowerCase();
+
+function playRound(playerSelection, computerSelection) {
+    if (playerSelection == computerSelection) {
+        return 'Its a tie!'
+    }
+    
+}
