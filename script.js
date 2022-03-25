@@ -5,8 +5,6 @@ function computerPlay() {
     return choices[number]
 }
 
-let computerSelection = computerPlay()
-let playerSelection = prompt('Choose: Rock, paper or scissors').toLowerCase();
 
 function playRound(playerSelection, computerSelection) {
     if (choices.includes(playerSelection)){
@@ -29,5 +27,14 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-console.log(playerSelection +' '+ computerSelection)
-console.log(playRound(playerSelection, computerSelection))
+function game() {
+    for (let i = 0; i < 5; i++) {
+        let computerSelection = computerPlay()
+        let playerSelection = prompt('Choose: Rock, paper or scissors').toLowerCase();
+        playRound(playerSelection, computerSelection)
+
+        console.log(playRound(playerSelection, computerSelection))
+    }
+}
+
+game()
