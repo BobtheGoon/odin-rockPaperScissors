@@ -42,25 +42,28 @@ const choices = ['rock', 'paper', 'scissors'];
 const buttons = document.querySelectorAll('button');
 
 
-buttons.forEach((button) => {
-    button.addEventListener('click', () => {
-        playerSelection = button.id;
-        computerSelection = computerPlay();
-        result = playRound(playerSelection, computerSelection);
-        createElement(result);
+//buttons.forEach((button) => {
+//    button.addEventListener('click', () => {
+//        playerSelection = button.id;
+//        computerSelection = computerPlay();
+//        result = playRound(playerSelection, computerSelection);
+//        createElement(result);
+//    })
+//})
+
+
+
+function game() {
+    let games = 0;
+    buttons.forEach((button) => {
+        button.addEventListener('click', () => {
+            playerSelection = button.id;
+            computerSelection = computerPlay();
+            result = playRound(playerSelection, computerSelection);
+            createElement(result);
+        })
     })
-})
+    console.log(games)
+}
 
-
-
-//function game() {
-//    for (let i = 0; i < 5; i++) {
-//        let computerSelection = computerPlay();
-//        let playerSelection = prompt('Choose: Rock, paper or scissors').toLowerCase();
-//        playRound(playerSelection, computerSelection);
-//
-//        console.log(playRound(playerSelection, computerSelection));
-//    }
-//}
-//
-//game();
+game();
