@@ -22,9 +22,6 @@ function playRound(playerSelection, computerSelection) {
             return [`You lose, ${computerSelection} beats ${playerSelection}`, 'computer'];
         }
     }
-    else {
-        return 'Seems like you misstyped your selection.';
-    }
 }
 
 
@@ -47,7 +44,13 @@ function updateScore(playerScore, computerScore) {
 function gameOver(playerScore, computerScore) {
     if (playerScore >= 5 || computerScore >= 5) {
         endGame = true;
-        createElement('Game over!');
+        if (playerScore > computerScore) {
+            winner = 'player'
+        }
+        else {
+            winner = 'computer'
+        }
+        createElement(`Game over! The ${winner} won!`);
     }
 }
 
