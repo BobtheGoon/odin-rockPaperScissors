@@ -1,0 +1,13 @@
+body {
+    background-color: rgba(0, 73, 168, 0.651);
+}
+
+h1 {
+    text-align: center;
+}
+
+#container {
+    display: flex;
+    flex: auto;
+    justify-content: center;
+}
