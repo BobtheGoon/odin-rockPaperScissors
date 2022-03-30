@@ -32,15 +32,22 @@ function createElement(result) {
     const para = document.createElement('p');
     const node = document.createTextNode(result);
 
-    para.appendChild(node)
-    document.getElementById('container').appendChild(para)
+    para.appendChild(node);
+    document.getElementById('container').appendChild(para);
 
 }
 
 
 function updateScore(playerScore, computerScore) {
-    div = document.getElementById('score')
-    div.innerText = `Score = Player : ${playerScore}, Computer : ${computerScore}`
+    div = document.getElementById('score');
+    div.innerText = `Score = Player : ${playerScore}, Computer : ${computerScore}`;
+}
+
+
+function gameOver(playerScore, computerScore) {
+    if (playerScore >= 5 || computerScore >= 5) {
+        createElement('Game over!')
+    }
 }
 
 
@@ -57,14 +64,15 @@ function game() {
             createElement(result[0]);
             games += 1
 
-            console.log(result[1])
             if (result[1] === 'player') {
                 playerScore += 1;
             }
             else if (result[1] === 'computer') {
                 computerScore += 1;
             }
-            updateScore(playerScore, computerScore)
+            
+            updateScore(playerScore, computerScore);
+            gameOver(playerScore, computerScore);
         })
     })
 }
