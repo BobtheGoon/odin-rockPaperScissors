@@ -30,7 +30,7 @@ function createElement(result) {
     const node = document.createTextNode(result);
 
     para.appendChild(node);
-    document.getElementById('score').appendChild(para);
+    document.getElementById('games').appendChild(para);
 
 }
 

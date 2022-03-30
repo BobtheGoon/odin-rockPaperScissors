@@ -11,3 +11,7 @@ h1 {
     flex: auto;
     justify-content: center;
 }
+
+#container button {
+    margin: 0px 10px;
+}
