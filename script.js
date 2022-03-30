@@ -10,16 +10,16 @@ function playRound(playerSelection, computerSelection) {
         playerNum = choices.indexOf(playerSelection, 0);
         computerNum = choices.indexOf(computerSelection, 0);
         if (playerNum == computerNum) {
-            return 'Its a tie!';
+            return ['Its a tie!', 'tie'];
         }
         else if (playerNum == 0 && computerNum == 2 || 
                     playerNum == 1 && computerNum == 0 || 
                     playerNum == 2 && computerNum == 1) {
-            return `You win, ${playerSelection} beats ${choices[computerNum]}!`;
+            return [`You win, ${playerSelection} beats ${choices[computerNum]}!`, 'player'];
         }
 
         else {
-            return `You lose, ${computerSelection} beats ${playerSelection}`;
+            return [`You lose, ${computerSelection} beats ${playerSelection}`, 'computer'];
         }
     }
     else {
@@ -38,32 +38,37 @@ function createElement(result) {
 }
 
 
-const choices = ['rock', 'paper', 'scissors'];
-const buttons = document.querySelectorAll('button');
-
-
-//buttons.forEach((button) => {
-//    button.addEventListener('click', () => {
-//        playerSelection = button.id;
-//        computerSelection = computerPlay();
-//        result = playRound(playerSelection, computerSelection);
-//        createElement(result);
-//    })
-//})
-
+function updateScore(playerScore, computerScore) {
+    div = document.getElementById('score')
+    div.innerText = `Score = Player : ${playerScore}, Computer : ${computerScore}`
+}
 
 
 function game() {
     let games = 0;
+    let playerScore = 0;
+    let computerScore = 0;
+
     buttons.forEach((button) => {
         button.addEventListener('click', () => {
             playerSelection = button.id;
             computerSelection = computerPlay();
             result = playRound(playerSelection, computerSelection);
-            createElement(result);
+            createElement(result[0]);
+            games += 1
+
+            console.log(result[1])
+            if (result[1] === 'player') {
+                playerScore += 1;
+            }
+            else if (result[1] === 'computer') {
+                computerScore += 1;
+            }
+            updateScore(playerScore, computerScore)
         })
     })
-    console.log(games)
 }
 
+const choices = ['rock', 'paper', 'scissors'];
+const buttons = document.querySelectorAll('button');
 game();
