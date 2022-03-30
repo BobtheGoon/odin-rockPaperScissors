@@ -46,7 +46,8 @@ function updateScore(playerScore, computerScore) {
 
 function gameOver(playerScore, computerScore) {
     if (playerScore >= 5 || computerScore >= 5) {
-        createElement('Game over!')
+        endGame = true;
+        createElement('Game over!');
     }
 }
 
@@ -60,23 +61,26 @@ function game() {
         button.addEventListener('click', () => {
             playerSelection = button.id;
             computerSelection = computerPlay();
-            result = playRound(playerSelection, computerSelection);
-            createElement(result[0]);
-            games += 1
+            if (!endGame) {
+                result = playRound(playerSelection, computerSelection);
+                createElement(result[0]);
+                games += 1
 
-            if (result[1] === 'player') {
-                playerScore += 1;
+                if (result[1] === 'player') {
+                    playerScore += 1;
+                }
+                else if (result[1] === 'computer') {
+                    computerScore += 1;
+                }
+
+                updateScore(playerScore, computerScore);
+                gameOver(playerScore, computerScore);
             }
-            else if (result[1] === 'computer') {
-                computerScore += 1;
-            }
-            
-            updateScore(playerScore, computerScore);
-            gameOver(playerScore, computerScore);
         })
     })
 }
 
 const choices = ['rock', 'paper', 'scissors'];
 const buttons = document.querySelectorAll('button');
+endGame = false
 game();
