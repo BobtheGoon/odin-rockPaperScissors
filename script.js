@@ -26,12 +26,13 @@ function playRound(playerSelection, computerSelection) {
 
 
 function createElement(result) {
-    const para = document.createElement('p');
-    const node = document.createTextNode(result);
+    document.getElementById('games').textContent = result;
 
-    para.appendChild(node);
-    document.getElementById('games').appendChild(para);
+}
 
+
+function changeElement(result) {
+    document.getElementById('games').textContent = result;
 }
 
 
@@ -66,7 +67,14 @@ function game() {
             computerSelection = computerPlay();
             if (!endGame) {
                 result = playRound(playerSelection, computerSelection);
-                createElement(result[0]);
+                
+                if (games < 1) {
+                    createElement(result[0]);
+                }
+                else {
+                    changeElement(result[0])
+                }
+                
                 games += 1
 
                 if (result[1] === 'player') {
