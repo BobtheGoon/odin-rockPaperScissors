@@ -31,11 +31,6 @@ function createElement(result) {
 }
 
 
-function changeElement(result) {
-    document.getElementById('games').textContent = result;
-}
-
-
 function updateScore(playerScore, computerScore) {
     div = document.getElementById('score');
     div.innerText = `Score = Player : ${playerScore}, Computer : ${computerScore}`;
@@ -67,14 +62,7 @@ function game() {
             computerSelection = computerPlay();
             if (!endGame) {
                 result = playRound(playerSelection, computerSelection);
-                
-                if (games < 1) {
-                    createElement(result[0]);
-                }
-                else {
-                    changeElement(result[0])
-                }
-                
+                createElement(result[0]);
                 games += 1
 
                 if (result[1] === 'player') {
