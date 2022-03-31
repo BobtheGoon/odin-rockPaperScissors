@@ -17,6 +17,7 @@ h1 {
     margin: 0px 10px;
 }
 
+
 #score {
     display: flex;
     justify-content: center;
@@ -26,4 +27,11 @@ h1 {
 #games {
     display: flex;
     justify-content: center;
+}
+
+#winner {
+    display: flex;
+    justify-content: center;
+    font-size: 30px;
+    margin-top: 50px;
 }

@@ -25,15 +25,21 @@ function playRound(playerSelection, computerSelection) {
 }
 
 
-function createElement(result) {
+function updateResult(result) {
     document.getElementById('games').textContent = result;
 
 }
 
 
 function updateScore(playerScore, computerScore) {
-    div = document.getElementById('score');
+    const div = document.getElementById('score');
     div.innerText = `Score = Player : ${playerScore}, Computer : ${computerScore}`;
+}
+
+
+function updateWinner(result) {
+    const div = document.getElementById('winner');
+    div.innerText = result;
 }
 
 
@@ -46,7 +52,7 @@ function gameOver(playerScore, computerScore) {
         else {
             winner = 'computer'
         }
-        createElement(`Game over! The ${winner} won!`);
+        updateWinner(`Game over! The ${winner} won!`);
     }
 }
 
@@ -62,7 +68,7 @@ function game() {
             computerSelection = computerPlay();
             if (!endGame) {
                 result = playRound(playerSelection, computerSelection);
-                createElement(result[0]);
+                updateResult(result[0]);
                 games += 1
 
                 if (result[1] === 'player') {
@@ -71,10 +77,10 @@ function game() {
                 else if (result[1] === 'computer') {
                     computerScore += 1;
                 }
-
-                updateScore(playerScore, computerScore);
-                gameOver(playerScore, computerScore);
             }
+        updateScore(playerScore, computerScore);
+        gameOver(playerScore, computerScore);
+        
         })
     })
 }
